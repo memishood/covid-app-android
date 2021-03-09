@@ -1,6 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CovidApp</string>
-    <string name="app_exit_status_message">Uygulamadan çıkmak için tekrar GERI basın</string>
     <string name="fragment_home_top_container_title">Bugün nasıl hissediyorsun?</string>
     <string name="fragment_home_top_container_message">COVID-19 semptomlarından herhangi biri ile kendinizi hasta hissederseniz, lütfen yardım için hemen bizi arayın veya SMS ile gönderin.</string>
     <string name="fragment_home_top_container_statistics">İstatistikler</string>
