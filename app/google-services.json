@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "343070285035",
+    "project_id": "covid-app-android",
+    "storage_bucket": "covid-app-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343070285035:android:592483cd81dac7dc2eb2ae",
+        "android_client_info": {
+          "package_name": "com.covidapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343070285035-q902dh1e23tm6ia7dtpv8b7uvcpjs9k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4NXG4_oKOliD-TooNExfySTeRUXWE5P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343070285035-q902dh1e23tm6ia7dtpv8b7uvcpjs9k4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
