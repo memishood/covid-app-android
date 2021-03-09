@@ -4,86 +4,97 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.HomeFragment">
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:orientation="vertical"
-        android:background="@drawable/fragment_home_top_container_background">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/fragment_home_top_container_title"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:fontFamily="@font/roboto_bold" />
-
-        <RelativeLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp">
+            android:orientation="vertical"
+            android:background="@drawable/fragment_home_top_container_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/fragment_home_top_container_message_text_view"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/fragment_home_top_container_call_button_view"
-                android:fontFamily="@font/roboto_light"
-                android:lineSpacingExtra="5sp"
-                android:text="@string/fragment_home_top_container_message"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/fragment_home_top_container_title"
                 android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_bold" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fragment_home_top_container_call_button_view"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/holo_red_light"
-                android:src="@drawable/ic_baseline_call_24"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="23dp"
-                android:layout_marginStart="23dp"
-                app:tint="@android:color/white"
-                app:borderWidth="0dp" />
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp">
 
-        </RelativeLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fragment_home_top_container_message_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/fragment_home_top_container_call_button_view"
+                    android:fontFamily="@font/roboto_light"
+                    android:lineSpacingExtra="5sp"
+                    android:text="@string/fragment_home_top_container_message"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="14dp"
-            android:text="@string/fragment_home_top_container_statistics"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            app:fontFamily="@font/roboto_bold" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fragment_home_top_container_call_button_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:src="@drawable/ic_baseline_call_24"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="23dp"
+                    android:layout_marginStart="23dp"
+                    app:tint="@android:color/white"
+                    app:borderWidth="0dp"
+                    android:contentDescription="@string/fragment_home_top_container_statistics_menu_total" />
 
-        <com.google.android.material.tabs.TabLayout
-            app:tabTextAppearance="@style/CustomTabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/fragment_home_top_container_statistics_menu_background"
-            android:layout_margin="17dp"
-            app:tabMode="fixed"
-            app:tabTextColor="#d1d1d1"
-            app:tabSelectedTextColor="@android:color/white"
-            app:tabIndicator="@drawable/fragment_home_top_container_statistics_menu_background">
+            </RelativeLayout>
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/fragment_home_top_container_statistics_menu_daily"/>
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="14dp"
+                android:text="@string/fragment_home_top_container_statistics"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:fontFamily="@font/roboto_bold" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
+            <com.google.android.material.tabs.TabLayout
+                app:tabTextAppearance="@style/CustomTabLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/fragment_home_top_container_statistics_menu_total"/>
+                android:background="@drawable/fragment_home_top_container_statistics_menu_background"
+                android:layout_margin="17dp"
+                app:tabTextColor="@android:color/white"
+                app:tabIndicatorGravity="stretch"
+                app:tabIndicator="@drawable/fragment_home_top_container_statistics_menu_selected_item_background"
+                app:tabIndicatorColor="@color/white"
+                app:tabSelectedTextColor="@android:color/black">
 
-        </com.google.android.material.tabs.TabLayout>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_home_top_container_statistics_menu_daily"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_home_top_container_statistics_menu_total"/>
+
+            </com.google.android.material.tabs.TabLayout>
+            <!--VAKALAR-->
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
