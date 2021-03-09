@@ -8,11 +8,13 @@ import com.covidapp.R
 import com.covidapp.databinding.ActivityMainBinding
 import com.covidapp.ext.Extensions.runOnHandler
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * @author emre.memis@ovidos.com
  */
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
