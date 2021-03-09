@@ -70,4 +70,5 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.6.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation "com.airbnb.android:lottie:$lottie_version"
+    implementation("io.coil-kt:coil:1.1.1")
 }
