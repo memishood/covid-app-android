@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.covidapp.HomeFragment"
+        android:name="com.covidapp.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>

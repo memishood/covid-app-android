@@ -1,9 +1,10 @@
-package com.covidapp
+package com.covidapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.covidapp.R
 import com.covidapp.databinding.ActivityMainBinding
 import com.covidapp.ext.Extensions.runOnHandler
 import com.google.android.material.snackbar.Snackbar
