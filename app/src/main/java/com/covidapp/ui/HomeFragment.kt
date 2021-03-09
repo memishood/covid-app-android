@@ -32,8 +32,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.loadingMutableLiveData.observe(viewLifecycleOwner) {
+            Log.d(TAG, "onViewCreated: loading status $it")
+        }
         viewModel.covidListMutableLiveData.observe(viewLifecycleOwner) {
-            Log.d(TAG, "onCreate: $it")
+            Log.d(TAG, "onViewCreated: $it")
+        }
+        viewModel.throwableMutableLiveData.observe(viewLifecycleOwner) {
+            Log.d(TAG, "onViewCreated: something went error ${it.localizedMessage}")
         }
     }
 

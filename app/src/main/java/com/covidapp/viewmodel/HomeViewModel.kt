@@ -19,15 +19,22 @@ class HomeViewModel @Inject constructor(
     private val repository: HomeRepository
 ): ViewModel() {
     val covidListMutableLiveData = MutableLiveData<Covid>()
+    val loadingMutableLiveData = MutableLiveData<Boolean>()
+    val throwableMutableLiveData = MutableLiveData<Throwable>()
 
     /**
      * get data from repository
      */
     init {
         viewModelScope.launch {
+            loadingMutableLiveData.value = true
             repository.getData()
                 .collect {
-                    it?.let { data -> covidListMutableLiveData.value = data }
+                    when (it != null) {
+                        true -> covidListMutableLiveData.value = it
+                        false -> throwableMutableLiveData.value = Throwable("Bir hata oluştu, lütfen tekrar dene.")
+                    }
+                    loadingMutableLiveData.value = false
                 }
         }
     }
