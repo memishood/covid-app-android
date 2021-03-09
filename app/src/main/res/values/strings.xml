@@ -4,4 +4,6 @@
     <string name="fragment_home_top_container_title">Bugün nasıl hissediyorsun?</string>
     <string name="fragment_home_top_container_message">COVID-19 semptomlarından herhangi biri ile kendinizi hasta hissederseniz, lütfen yardım için hemen bizi arayın veya SMS ile gönderin.</string>
     <string name="fragment_home_top_container_statistics">İstatistikler</string>
+    <string name="fragment_home_top_container_statistics_menu_daily">GÜNLÜK</string>
+    <string name="fragment_home_top_container_statistics_menu_total">TOPLAM</string>
 </resources>
