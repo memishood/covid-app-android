@@ -63,23 +63,27 @@
             android:textSize="20sp"
             app:fontFamily="@font/roboto_bold" />
 
-
-        <com.google.android.material.chip.ChipGroup
+        <com.google.android.material.tabs.TabLayout
+            app:tabTextAppearance="@style/CustomTabLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/fragment_home_top_container_statistics_menu_background"
+            android:layout_margin="17dp"
+            app:tabMode="fixed"
+            app:tabTextColor="#d1d1d1"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabIndicator="@drawable/fragment_home_top_container_statistics_menu_background">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_1"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+            <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:fontFamily="@font/roboto_bold"
-                app:chipIcon="@drawable/ic_baseline_call_24"
-                app:chipIconVisible="true"
-                app:chipIconEnabled="true"
-                android:text="Günlük"/>
+                android:text="@string/fragment_home_top_container_statistics_menu_daily"/>
 
-        </com.google.android.material.chip.ChipGroup>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_home_top_container_statistics_menu_total"/>
+
+        </com.google.android.material.tabs.TabLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
