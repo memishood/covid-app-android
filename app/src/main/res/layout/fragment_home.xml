@@ -1,11 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.HomeFragment">
-    <FrameLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:background="@drawable/fragment_home_top_container_background">
 
-    </FrameLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/fragment_home_top_container_title"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fragment_home_top_container_message_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/fragment_home_top_container_call_button_view"
+                android:fontFamily="@font/roboto_light"
+                android:lineSpacingExtra="5sp"
+                android:text="@string/fragment_home_top_container_message"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fragment_home_top_container_call_button_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:src="@drawable/ic_baseline_call_24"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="23dp"
+                android:layout_marginStart="23dp"
+                app:tint="@android:color/white"
+                app:borderWidth="0dp" />
+
+        </RelativeLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp"
+            android:text="@string/fragment_home_top_container_statistics"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:fontFamily="@font/roboto_bold" />
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_1"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/roboto_bold"
+                app:chipIcon="@drawable/ic_baseline_call_24"
+                app:chipIconVisible="true"
+                app:chipIconEnabled="true"
+                android:text="Günlük"/>
+
+        </com.google.android.material.chip.ChipGroup>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
