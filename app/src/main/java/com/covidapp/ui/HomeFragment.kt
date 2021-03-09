@@ -7,6 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.covidapp.databinding.FragmentHomeBinding
 
+/**
+ * @author emre.memis@ovidos.com
+ */
+
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
