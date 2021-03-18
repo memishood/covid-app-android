@@ -1,7 +1,8 @@
 package com.covidapp.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,16 +10,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.covidapp.databinding.FragmentHomeBinding
 import com.covidapp.viewmodel.HomeViewModel
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.scopes.ActivityScoped
 
 /**
  * @author emre.memis@ovidos.com
  */
 
-@ActivityScoped
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),
+        TabLayout.OnTabSelectedListener {
+
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
 
@@ -32,18 +35,37 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.isDaily = true
+
         viewModel.loadingMutableLiveData.observe(viewLifecycleOwner) {
-            Log.d(TAG, "onViewCreated: loading status $it")
+            binding.loading = it
         }
         viewModel.covidListMutableLiveData.observe(viewLifecycleOwner) {
-            Log.d(TAG, "onViewCreated: $it")
+            binding.covid = it
         }
         viewModel.throwableMutableLiveData.observe(viewLifecycleOwner) {
-            Log.d(TAG, "onViewCreated: something went error ${it.localizedMessage}")
+            Snackbar.make(view, it.localizedMessage!!, Snackbar.LENGTH_SHORT).show()
         }
+        viewModel.fetch()
+
+        binding.fragmentHomeTopContainerTabLayout
+            .addOnTabSelectedListener(this@HomeFragment)
+
+        binding.fragmentHomeTopContainerCallButtonView
+                .setOnClickListener {
+                    Intent(Intent.ACTION_DIAL)
+                            .apply { data = Uri.parse("tel:112") }
+                            .also { intent -> startActivity(intent) }
+                }
     }
 
-    companion object {
-        private const val TAG = "HomeFragment.kt"
+    override fun onTabSelected(tab: TabLayout.Tab?) {
+        binding.isDaily = tab?.position == 0
     }
+
+    override fun onTabReselected(tab: TabLayout.Tab?) {
+        viewModel.fetch()
+    }
+
+    override fun onTabUnselected(tab: TabLayout.Tab?) = Unit
 }

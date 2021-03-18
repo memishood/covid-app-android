@@ -20,8 +20,12 @@ class HomeRepository @Inject constructor(private val api: CovidAPI) {
      */
     suspend fun getData() : Flow<Covid?> {
         return flow {
-            val data = api.getCovidData()
+            val data = api.data(accessToken = ACCESS_TOKEN)
             emit(data)
         }.flowOn(Dispatchers.IO)
+    }
+
+    companion object {
+        private const val ACCESS_TOKEN = "44GBbI9VC3xXl4OVT1O3"
     }
 }

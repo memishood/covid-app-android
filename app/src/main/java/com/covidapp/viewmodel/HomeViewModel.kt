@@ -25,17 +25,21 @@ class HomeViewModel @Inject constructor(
     /**
      * get data from repository
      */
-    init {
+    fun fetch() {
         viewModelScope.launch {
             loadingMutableLiveData.value = true
             repository.getData()
                 .collect {
                     when (it != null) {
                         true -> covidListMutableLiveData.value = it
-                        false -> throwableMutableLiveData.value = Throwable("Bir hata oluştu, lütfen tekrar dene.")
+                        false -> throwableMutableLiveData.value = Throwable(REPOSITORY_ERROR_MESSAGE)
                     }
                     loadingMutableLiveData.value = false
                 }
         }
+    }
+
+    companion object {
+        private const val REPOSITORY_ERROR_MESSAGE = "Bir hata oluştu, lütfen tekrar dene."
     }
 }

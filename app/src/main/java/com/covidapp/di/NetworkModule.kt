@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object NetworkModule {
-    private const val BASE_URL = "https://api.apify.com/"
+    private const val BASE_URL = "https://covid-api-backend.herokuapp.com/"
 
     /**
      * create a retrofit instance
@@ -32,6 +32,8 @@ object NetworkModule {
 
     /**
      * create a CovidApi instance
+     * @param retrofit from dependency injection
+     * @see retrofitProvides
      */
     @Provides
     @Singleton

@@ -6,4 +6,14 @@
     <string name="fragment_home_top_container_statistics">İstatistikler</string>
     <string name="fragment_home_top_container_statistics_menu_daily">GÜNLÜK</string>
     <string name="fragment_home_top_container_statistics_menu_total">TOPLAM</string>
+    <string name="fragment_home_top_container_data_bar_daily_tested">Test Sayısı</string>
+    <string name="fragment_home_top_container_data_bar_total_tested">Test Sayısı</string>
+    <string name="fragment_home_top_container_data_bar_daily_infected">Vaka Sayısı</string>
+    <string name="fragment_home_top_container_data_bar_total_infected">Vaka Sayısı</string>
+    <string name="fragment_home_top_container_data_bar_daily_ill">Hasta Sayısı</string>
+    <string name="fragment_home_top_container_data_bar_total_death">Vefat Sayısı</string>
+    <string name="fragment_home_top_container_data_bar_daily_death">Vefat Sayısı</string>
+    <string name="fragment_home_top_container_data_bar_total_seriously_ill">Ağır Hasta Sayısı</string>
+    <string name="fragment_home_top_container_data_bar_daily_recovered">İyileşen Sayısı</string>
+    <string name="fragment_home_top_container_data_bar_total_recovered">İyileşen Sayısı</string>
 </resources>

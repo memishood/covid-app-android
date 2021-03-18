@@ -4,6 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.HomeFragment">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="covid"
+            type="com.covidapp.model.Covid" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="isDaily"
+            type="Boolean" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -34,7 +51,6 @@
                 android:layout_marginTop="10dp">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fragment_home_top_container_message_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -55,14 +71,14 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="23dp"
                     android:layout_marginStart="23dp"
+                    android:contentDescription="@string/fragment_home_top_container_statistics_menu_total"
                     app:tint="@android:color/white"
-                    app:borderWidth="0dp"
-                    android:contentDescription="@string/fragment_home_top_container_statistics_menu_total" />
+                    app:borderWidth="0dp" />
 
             </RelativeLayout>
 
             <com.google.android.material.textview.MaterialTextView
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="14dp"
@@ -72,7 +88,7 @@
                 app:fontFamily="@font/roboto_bold" />
 
             <com.google.android.material.tabs.TabLayout
-                app:tabTextAppearance="@style/CustomTabLayout"
+                android:id="@+id/fragment_home_top_container_tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fragment_home_top_container_statistics_menu_background"
@@ -81,7 +97,8 @@
                 app:tabIndicatorGravity="stretch"
                 app:tabIndicator="@drawable/fragment_home_top_container_statistics_menu_selected_item_background"
                 app:tabIndicatorColor="@color/white"
-                app:tabSelectedTextColor="@android:color/black">
+                app:tabSelectedTextColor="@android:color/black"
+                app:tabTextAppearance="@style/CustomTabLayout">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
@@ -94,7 +111,245 @@
                     android:text="@string/fragment_home_top_container_statistics_menu_total"/>
 
             </com.google.android.material.tabs.TabLayout>
-            <!--VAKALAR-->
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#FFB259"
+                    app:contentPadding="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:indeterminateTint="@color/black"
+                            android:layout_centerInParent="true"
+                            android:visibility="@{loading ? View.VISIBLE : View.GONE}"/>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:textColor="@color/white"
+                            android:text="@{isDaily ? @string/fragment_home_top_container_data_bar_daily_tested : @string/fragment_home_top_container_data_bar_total_tested}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:text="@{isDaily ? covid.gunluk_test : covid.toplam_test}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#FF5959"
+                    app:contentPadding="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:indeterminateTint="@color/black"
+                            android:layout_centerInParent="true"
+                            android:visibility="@{loading ? View.VISIBLE : View.GONE}"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:textColor="@color/white"
+                            android:text="@{isDaily ? @string/fragment_home_top_container_data_bar_daily_infected : @string/fragment_home_top_container_data_bar_total_infected}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:text="@{isDaily ? covid.gunluk_vaka : covid.toplam_hasta}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}" />
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="40dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#4CD97B"
+                    app:contentPadding="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:indeterminateTint="@color/black"
+                            android:layout_centerInParent="true"
+                            android:visibility="@{loading ? View.VISIBLE : View.GONE}"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:textColor="@color/white"
+                            android:text="@{isDaily ? @string/fragment_home_top_container_data_bar_daily_recovered : @string/fragment_home_top_container_data_bar_total_recovered}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:text="@{isDaily ? covid.gunluk_iyilesen : covid.toplam_iyilesen}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}" />
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#4DB5FF"
+                    app:contentPadding="8dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:indeterminateTint="@color/black"
+                            android:layout_centerInParent="true"
+                            android:visibility="@{loading ? View.VISIBLE : View.GONE}"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:textColor="@color/white"
+                            android:text="@{isDaily ? @string/fragment_home_top_container_data_bar_daily_death : @string/fragment_home_top_container_data_bar_total_seriously_ill}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:text="@{isDaily ? covid.gunluk_vefat : covid.agir_hasta_sayisi}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}" />
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#9059FF"
+                    app:contentPadding="8dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:indeterminateTint="@color/black"
+                            android:layout_centerInParent="true"
+                            android:visibility="@{loading ? View.VISIBLE : View.GONE}"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:textColor="@color/white"
+                            android:text="@{isDaily ? @string/fragment_home_top_container_data_bar_daily_ill : @string/fragment_home_top_container_data_bar_total_death}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:text="@{isDaily ? covid.gunluk_hasta : covid.toplam_vefat}"
+                            android:visibility="@{loading ? View.GONE : View.VISIBLE}" />
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
