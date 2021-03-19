@@ -19,11 +19,10 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(),
-        TabLayout.OnTabSelectedListener {
-
+class HomeFragment : Fragment(), TabLayout.OnTabSelectedListener {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
+    private val adapter = NewsAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +40,7 @@ class HomeFragment : Fragment(),
             binding.loading = it
         }
         viewModel.covidListMutableLiveData.observe(viewLifecycleOwner) {
+            adapter.update(it.haberler)
             binding.covid = it
         }
         viewModel.throwableMutableLiveData.observe(viewLifecycleOwner) {
@@ -57,15 +57,39 @@ class HomeFragment : Fragment(),
                             .apply { data = Uri.parse("tel:112") }
                             .also { intent -> startActivity(intent) }
                 }
+
+        binding.fragmentHomeTopContainer
+            .post {
+                val parent = binding.fragmentHomeTopContainer.parent as ViewGroup
+                val panelHeight = parent.height - binding.fragmentHomeTopContainer.height
+                binding.fragmentHomeRootView.panelHeight = panelHeight
+            }
+
+        binding.fragmentHomeBottomContainerRecyclerView.adapter = adapter
     }
 
+    /**
+     * when user clicked to the any tab this callback will run
+     * @see com.covidapp.R.layout.fragment_home
+     * @param tab selected tab
+     */
     override fun onTabSelected(tab: TabLayout.Tab?) {
         binding.isDaily = tab?.position == 0
     }
 
+    /**
+     * when user clicked to selected tab again this callback will run
+     * @see com.covidapp.R.layout.fragment_home
+     * @param tab selected tab
+     */
     override fun onTabReselected(tab: TabLayout.Tab?) {
         viewModel.fetch()
     }
 
+    /**
+     * when user clicked to another tab this callback will run
+     * @see com.covidapp.R.layout.fragment_home
+     * @param tab selected tab
+     */
     override fun onTabUnselected(tab: TabLayout.Tab?) = Unit
 }

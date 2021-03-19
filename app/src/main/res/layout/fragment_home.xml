@@ -7,48 +7,41 @@
 
     <data>
         <import type="android.view.View" />
-
-        <variable
-            name="covid"
-            type="com.covidapp.model.Covid" />
-
-        <variable
-            name="loading"
-            type="Boolean" />
-
-        <variable
-            name="isDaily"
-            type="Boolean" />
+        <variable name="covid" type="com.covidapp.model.Covid" />
+        <variable name="loading" type="Boolean" />
+        <variable name="isDaily" type="Boolean" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:id="@+id/fragment_home_root_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        app:umanoScrollableView="@+id/fragment_home_bottom_container_recycler_view">
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/fragment_home_top_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/fragment_home_top_container_background"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="25dp"
+                android:textSize="17sp"
                 android:text="@string/fragment_home_top_container_title"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
                 android:fontFamily="@font/roboto_bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -58,8 +51,7 @@
                     android:fontFamily="@font/roboto_light"
                     android:lineSpacingExtra="5sp"
                     android:text="@string/fragment_home_top_container_message"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
+                    android:textColor="@android:color/white" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fragment_home_top_container_call_button_view"
@@ -83,8 +75,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="14dp"
                 android:text="@string/fragment_home_top_container_statistics"
+                android:textSize="16sp"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
                 app:fontFamily="@font/roboto_bold" />
 
             <com.google.android.material.tabs.TabLayout
@@ -117,7 +109,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp">
 
@@ -217,8 +208,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="40dp">
+                android:layout_marginEnd="20dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
@@ -351,5 +341,11 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_home_bottom_container_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 </layout>
