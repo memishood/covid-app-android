@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import coil.load
+import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
 import com.google.android.material.textview.MaterialTextView
 
@@ -30,9 +31,9 @@ object Extensions {
      * @param view which image is loading
      * @param url fetching remote data
      */
-    @BindingAdapter("android:setImageUrl")
+    @BindingAdapter("android:setRoundedImageUrl")
     @JvmStatic
-    fun setImageUrl(view: AppCompatImageView, url: String?) {
+    fun setRoundedImageUrl(view: AppCompatImageView, url: String?) {
         url?.let {
             view.load(it) {
                 placeholder(
@@ -43,6 +44,28 @@ object Extensions {
                         }
                 )
                 transformations(RoundedCornersTransformation(20f))
+            }
+        }
+    }
+
+    /**
+     * we load images using this function
+     * @see com.covidapp.R.layout.fragment_news_detail
+     * @param view which image is loading
+     * @param url fetching remote data
+     */
+    @BindingAdapter("android:setImageUrl")
+    @JvmStatic
+    fun setImageUrl(view: AppCompatImageView, url :String?) {
+        url?.let {
+            view.load(it) {
+                placeholder(
+                    CircularProgressDrawable(view.context)
+                        .apply {
+                            centerRadius = 60f
+                            strokeWidth = 12f
+                        }
+                )
             }
         }
     }

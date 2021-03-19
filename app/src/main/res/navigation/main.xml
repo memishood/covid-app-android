@@ -9,5 +9,22 @@
         android:id="@+id/homeFragment"
         android:name="com.covidapp.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.covidapp.ui.NewsDetailFragment"
+        android:label="fragment_news_detail"
+        tools:layout="@layout/fragment_news_detail" >
+        <argument
+            android:name="news"
+            app:argType="com.covidapp.model.News" />
+    </fragment>
 </navigation>

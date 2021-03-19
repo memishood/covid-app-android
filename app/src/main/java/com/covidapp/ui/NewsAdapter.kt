@@ -2,6 +2,7 @@ package com.covidapp.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.covidapp.databinding.LayoutNewsBinding
 import com.covidapp.model.News
@@ -14,7 +15,14 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
     )
 
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
-        holder.binding.news = items[holder.adapterPosition]
+        val item = items[holder.adapterPosition]
+        holder.binding.news = item
+
+        holder.itemView
+            .setOnClickListener {
+                it.findNavController()
+                    .navigate(HomeFragmentDirections.actionHomeFragmentToNewsDetailFragment(item))
+            }
     }
 
     override fun getItemCount(): Int {

@@ -17,4 +17,5 @@
     <string name="fragment_home_top_container_data_bar_daily_recovered">İyileşen Sayısı</string>
     <string name="fragment_home_top_container_data_bar_total_recovered">İyileşen Sayısı</string>
     <string name="layout_news_today">Bugün</string>
+    <string name="fragment_news_detail_source">Kaynak</string>
 </resources>

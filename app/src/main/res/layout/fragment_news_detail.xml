@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.NewsDetailFragment">
+
+    <data>
+        <variable name="news" type="com.covidapp.model.News" />
+        <variable name="image" type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:setImageUrl="@{news.image}" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:text="@{news.name}"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:layout_alignParentBottom="true" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/fragment_news_detail_back_button"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="?homeAsUpIndicator"
+                android:tint="@color/white"
+                android:background="@android:color/transparent"
+                android:foreground="?selectableItemBackgroundBorderless"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"/>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:setRoundedImageUrl="@{image}"
+                        android:layout_gravity="center"/>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="17sp"
+                            android:textColor="@color/black"
+                            android:text="@{news.source}"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_marginStart="5dp"/>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="5dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/roboto_light"
+                                android:textSize="12sp"
+                                android:text="@string/layout_news_today"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/roboto_light"
+                                android:textSize="12sp"
+                                android:setRandomNumber="@{null}"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:gravity="center"
+                                android:drawableStart="@drawable/ic_baseline_remove_red_eye_24"
+                                android:drawablePadding="5dp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{news.description}"
+                    android:fontFamily="@font/roboto_light"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    android:text="@string/fragment_news_detail_source"
+                    android:fontFamily="@font/roboto"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fragment_news_detail_source_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@{news.url}"
+                    android:fontFamily="@font/roboto_light"
+                    android:foreground="?selectableItemBackgroundBorderless"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </ScrollView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>
