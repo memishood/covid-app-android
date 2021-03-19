@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.covidapp.databinding.LayoutNewsBinding
 import com.covidapp.model.News
 
+/**
+ * @author emre.memis@ovidos.com
+ */
+
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
     private val items = arrayListOf<News>()
 

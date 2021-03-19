@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.covidapp.R
 import com.covidapp.databinding.FragmentNewsDetailBinding
 
 /**
@@ -30,7 +29,7 @@ class NewsDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
             binding.news = NewsDetailFragmentArgs.fromBundle(it).news
-            binding.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/NTV_Symbol_1953.svg/1200px-NTV_Symbol_1953.svg.png"
+            binding.image = NTV_IMAGE_URL
         }
 
         binding.fragmentNewsDetailBackButton
@@ -47,5 +46,9 @@ class NewsDetailFragment : Fragment() {
                         .also { intent -> startActivity(intent) }
                 }
             }
+    }
+
+    companion object {
+        private const val NTV_IMAGE_URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/NTV_Symbol_1953.svg/1200px-NTV_Symbol_1953.svg.png"
     }
 }
