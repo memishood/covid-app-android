@@ -16,7 +16,7 @@ I've used below components
 
 <br>
 
-I've used <a href="https://ktor.io/">Ktor</a> for Backend, you can reach my backend repository from <a href="https://https://github.com/memishood/covid-app-backend">here</a>.
+I've used <a href="https://ktor.io/">Ktor</a> for Backend, you can reach my backend repository from <a href="https://github.com/memishood/covid-app-backend">here</a>.
 
 <br>
 
