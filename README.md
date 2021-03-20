@@ -4,6 +4,7 @@ I've used below components
   <a href="https://kotlinlang.org"><li>Kotlin</li></a>
   <a href="https://kotlinlang.org/docs/reference/coroutines-overview.html"><li>Coroutines</li></a>
   <a href="https://developer.android.com/jetpack/androidx/releases/lifecycle"><li>Android Lifecycle</li></a>
+  <a href="https://developer.android.com/topic/libraries/data-binding"><li>DataBinding</li></a>
   <a href="https://developer.android.com/training/dependency-injection/hilt-android"><li>Dagger-Hilt (Dependency Injection)</li></a>
   <a href="https://github.com/square/retrofit"><li>Retrofit</li></a>
   <a href="https://developer.android.com/training/data-storage/room"><li>Room (Jetpack)</li></a>
